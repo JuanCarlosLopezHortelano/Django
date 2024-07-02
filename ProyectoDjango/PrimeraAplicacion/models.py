@@ -7,3 +7,19 @@ class Carro(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.year}"
+    
+class Publisher(models.Model):
+    name = models.TextField(max_length=200)
+    address = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.name
+    
+
+class Book(models.Model):
+    title = models.TextField(max_length=200)
+    publication_data = models.DateField()
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
